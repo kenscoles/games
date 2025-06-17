@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="columnLeft">
+        <mat-form-field style="width:100px">
+            <mat-label>enter code</mat-label>
+            <input matInput [ngModel]="chosenCode()" (ngModelChange)="chosenCode.set($any($event)); selectedValue=$event.toUpperCase()">
+        </mat-form-field>
+        <div class="divider"></div>
+        <mat-form-field >
+            <mat-label>pick a country</mat-label>
+            <mat-select [(ngModel)]="selectedValue" (ngModelChange)=" this.chosenCode.set(this.selectedValue)"
+                name="code">
+                @for (item of result; track item.code) {
+                <mat-option [value]="item.code">{{item.name}}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+        <p>
+            @if(country.isLoading()) {
+        <h3>Loading ... please wait</h3>
+        }
+        @if(!country.isLoading() && !country.hasValue()) {
+            <h3>No country found with this code</h3>
+          }
+        @if(country.hasValue() && codes.hasValue()){
+        @let data = countryData();
+        <h2>{{data.name.common}}
+        @if(data.name.common !== data.name.native){
+             ({{ data.name.native}})
+        }
+        </h2>
+        <h2>Capital: {{data.capital.join(", ")}}</h2>
+        <h2>Independent: @if(data.independent) {YES} @else {NO} <h2>
+            </h2>Population: {{data.population | number}}</h2>
+        <h2>Drive on the : {{data.car.side}} </h2>
+        <h2>Currency: {{data.currency.name}} ( {{data.currency.symbol}} )</h2>
+        <h2 >Timezone(s): {{data.timezones.join(", ")}}</h2>
+        @if(data.borders) {
+        <h2>Border(s): {{data.borders.join(", ")}}</h2>
+        }
+        <h2>Language(s): {{data.langs.join(", ")}}</h2>
+        }
+
+    </div>
+    <div class="columnRight">
+        @if(country.hasValue() && countryData()){
+        <img class="flag" [src]="countryData().flags.svg" />
+
+        }
+    </div>
+</div>

@@ -1,0 +1,56 @@
+* {
+  box-sizing: border-box;
+}
+
+/* Create two columns that float next to each other */
+.columnLeft {
+  float: left;
+  width: 40%; /*this is adjustable*/
+  padding: 10px;
+  margin: 5%;
+}
+
+.columnRight {
+  float: right;
+  width: 40%; /*this is adjustable*/
+  padding: 10px;
+  margin: 5%;
+}
+
+.row:after { /* Clear floats after the columns */
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+
+  .columnLeft, .columnRight {
+    width: 100%;
+  }
+
+  h1, h2, h3, h4, h5, h6 { /* this makes headings single spaced  */
+  margin: 0; /* Remove default margins */
+  line-height: 1.2; /* Adjust line spacing */
+}
+}
+
+img {
+  border: 2px solid;
+  margin: 5px;
+  width: 30%;
+  display: block; /* for centring */
+  margin-left: auto; /* for centring */
+  margin-right: auto; /* for centring */
+}
+
+.flag {
+  width: 50%;
+}
+
+.divider {
+  width: 5px;
+  height: auto;
+  display: inline-block;
+}
