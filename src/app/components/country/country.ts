@@ -1,16 +1,15 @@
 import { httpResource } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { Component, ChangeDetectionStrategy, effect, inject, signal } from '@angular/core';
-import { debouncedSignal } from '../../shared/services/utility.service';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { UtilityService } from '../../shared/services/utility.service';
 import { myCode } from '../../country.interface';
 import { countryAdapter } from '../../country.adapter';
 import { FormsModule } from '@angular/forms';
+import { Util, debouncedSignal } from '../../shared/services/util';
 
 @Component({
   selector: 'app-country',
@@ -31,7 +30,7 @@ export class Country {
   isCountryListBuilt = false;
   countryData = signal<any | undefined>('')
 
-  private util = inject(UtilityService)
+  private util = inject(Util)
 
   constructor() {
 

@@ -1,0 +1,41 @@
+
+.flex-container {
+    /* We first create a flex layout context */
+    display: flex;
+    background: gray;
+    /* Then we define the flow direction  */
+    flex-direction: row;
+    
+    /* Then we define how is distributed the remaining space */
+    justify-content:left;
+    padding: 0;
+    margin: 1px;
+    list-style: none;
+    width: 80px;
+  }
+
+
+/* Option elements, when selected */
+option:checked {
+  box-shadow: 0 0 0 3px lime;
+  color: red;
+}
+ 
+/* for desktop ie above 1000px width */
+  @media only screen and (min-width: 1000px) { 
+    .flex-container{
+      width: 135px;
+    } 
+    table {
+      font-size: x-large;
+    }
+    tr { line-height: 30px; }
+/* for future use */    
+}
+.box {
+  width: 60%;
+  max-height: 200px;
+  margin-left: 15px;
+}
+ 
+  

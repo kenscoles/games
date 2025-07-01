@@ -18,6 +18,16 @@ export const routes: Routes = [
                 loadComponent: () => import('./components/country/country').then(c => c.Country)
 
             },
+             {
+                path: 'styles', title: 'styles',
+                loadComponent: () => import('./test/styles/styles').then(c => c.Styles)
+
+            },
+            {
+                path: 'master', title: 'master',
+                loadComponent: () => import('./components/mastermind/mastermind.component').then(c => c.MastermindComponent)
+
+            },
            
         ]
     }

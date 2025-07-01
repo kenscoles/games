@@ -10,9 +10,11 @@ import { State } from '../../shared/services/state';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="navigation">
-    <!-- <li><a mat-button [routerLink]="'/country'">Country</a></li>  -->
     <button matButton="elevated" [routerLink]="'/country'">Country</button>
+    <button matButton="elevated" [routerLink]="'/master'">Mastermind</button>
+    <button matButton="elevated" [routerLink]="'/styles'">Styles</button>
   </div>
+
   `,
   styleUrl: './menu.scss',
 })
@@ -22,10 +24,9 @@ export class Menu {
 
   constructor() {
     this.state.showMenuButton.set(false) // hides the app comp toolbar
-
     this.destroyRef.onDestroy(() => // register a destroy callback
     {
-      this.state.showMenuButton.set(true) // shows app comp toolbar when menu closes
+      this.state.showMenuButton.set(true) // shows app toolbar when menu closes
     }
 
     );

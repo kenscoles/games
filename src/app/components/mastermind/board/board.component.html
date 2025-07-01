@@ -1,0 +1,108 @@
+<table>
+  <tr>
+    <th>Try</th>
+    <th colspan="4">Combination</th>
+    <th>Result</th>
+  </tr>
+  <tr></tr>
+  <!-- iterate over all guesses -->
+  @for (guess of board.guesses; track guess; let try = $index) {
+  <tr>
+    <td style="color:rgb(0,0,0)">{{try+1}}</td>
+    <!--   THIS IS DISPLAY OF GUESSES -->
+    @for (i of this.util.numberArray(1,board.fields); track i) {
+    <td [style]="getStyle(guess.combination.items[i-1].toString())"></td><!--{{guess.combination.items[i-1]}}-->
+    }
+
+    @if(!guess.correct && !guess.correctColors){
+    <td class="flex-container"></td>
+    }
+
+    <td class="flex-container">
+      @for (i of guess.correct | fill; track i){ <!-- using FillPipe -->
+      <li style="color:black">&#9899;</li>
+      }
+      @for (i of guess.correctColors | fill; track i){
+      <li style="color:white">&#9898;</li>
+      }
+    </td>
+  </tr>
+  }
+  <!-- add empty lines for the remaining guesses -->
+  @for (i of this.util.numberArray(board.guesses.length+1, board.maxTries); track i) {
+  <tr>
+    <td>&nbsp;</td>
+    @for (i of this.util.numberArray(1,board.fields); track i) {
+    <td>&nbsp;</td>
+    }
+    <td>&nbsp;</td>
+  </tr>
+  }
+  <!-- input for new guess -->
+  @if (!gameWon && !gameLost) {
+  <tr>
+    <td>&nbsp;</td>
+    @for (i of this.util.numberArray(1,board.fields); track i) {
+    <td>
+      <div style="width: 50px; font-size:20px; ;">
+        <span style="width: 100px;" [style]="getStyle(combination.items[i-1].toString())">&#9898;</span>
+      </div>
+    </td>
+    }
+    <td>
+      <button appDebounceClick mat-raised-button color="primary" [debounceTime]="1000"
+        (debounceClick)="onGuess()">Guess</button>
+    </td>
+  </tr>
+  <!-- <tr>
+    <td><span style="width: 100px;" [style]="getStyle(combination.items[0].toString())">&#9898;</span>
+      <span style="width: 100px;" [style]="getStyle(combination.items[1].toString())">&#9898;</span>
+      <span style="width: 100px;" [style]="getStyle(combination.items[2].toString())">&#9898;</span>
+      <span style="width: 100px;" [style]="getStyle(combination.items[3].toString())">&#9898;</span>
+    </td>
+  </tr> -->
+  }
+  @if (gameLost) {
+  <tr>
+    <td colspan="6">Game lost</td>
+  </tr>
+  <tr></tr>
+  <tr>
+    <td>Secret</td>
+    @for (i of this.util.numberArray(1,board.fields); track i) {
+    <td [style]=" getStyle(board.secretCombination.items[i-1].toString())"></td>
+    <!--{{board.secretCombination.items[i-1]}}-->
+    }
+    <td>&nbsp;</td>
+  </tr>
+  }
+
+  @if (gameWon) {
+  <tr>
+    <td colspan="6">Game won</td>
+  </tr>
+  }
+
+</table>
+<br>
+@if (gameWon || gameLost) {
+<div>
+  <button mat-raised-button color="primary" (click)="newGame()">Play again</button>
+</div>
+
+}
+@if (!gameWon && !gameLost) {
+<div class="box">
+  <mat-grid-list cols="4" rowHeight="30px">
+    @for (i of this.util.numberArray(1,board.colors); track i){
+
+    @for (j of this.util.numberArray(1,board.fields); track j) {
+    <mat-grid-tile>
+      <button style="width: 50px;" [style]="getStyle(i.toString())" (click)="combination.items[j-1]=i">colour</button>
+    </mat-grid-tile>
+    }
+
+    }
+  </mat-grid-list>
+</div>
+}

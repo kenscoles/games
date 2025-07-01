@@ -1,0 +1,11 @@
+body {
+  .mdc-text-field--filled {
+    border: solid 1px var(--mat-sys-on-surface-variant);
+    border-radius: 0.75em;
+
+    &.mdc-text-field--invalid {
+      border-color: var(--mat-sys-error);
+    }
+  }
+  
+}

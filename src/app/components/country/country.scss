@@ -1,3 +1,5 @@
+@use "../../../styles" as global;
+
 * {
   box-sizing: border-box;
 }
@@ -24,7 +26,7 @@
 }
 
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: global.$mobileWidth) {
 
   .columnLeft, .columnRight {
     width: 100%;
@@ -39,7 +41,7 @@
 img {
   border: 2px solid;
   margin: 5px;
-  width: 30%;
+  width: 100%;
   display: block; /* for centring */
   margin-left: auto; /* for centring */
   margin-right: auto; /* for centring */
@@ -54,3 +56,4 @@ img {
   height: auto;
   display: inline-block;
 }
+

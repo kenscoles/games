@@ -3,8 +3,7 @@ import { effect, Injectable, Signal, signal } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class UtilityService {
-
+export class Util {
   constructor() { }
   t(min: number, max: number) {
     return Math.round((min - 0.5) + Math.random() * (max - min + 1));
