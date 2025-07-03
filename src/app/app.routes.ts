@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { redirectGuard } from './shared/guards/redirect-guard';
 
 export const routes: Routes = [
     {
@@ -14,17 +15,17 @@ export const routes: Routes = [
 
             },
             {
-                path: 'country', title: 'country',
+                path: 'country', title: 'country', canActivate: [redirectGuard],
                 loadComponent: () => import('./components/country/country').then(c => c.Country)
 
             },
              {
-                path: 'styles', title: 'styles',
+                path: 'styles', title: 'styles', canActivate: [redirectGuard],
                 loadComponent: () => import('./test/styles/styles').then(c => c.Styles)
 
             },
             {
-                path: 'master', title: 'master',
+                path: 'master', title: 'master', canActivate: [redirectGuard],
                 loadComponent: () => import('./components/mastermind/mastermind.component').then(c => c.MastermindComponent)
 
             },

@@ -23,6 +23,7 @@ export class Menu {
   protected state = inject(State)
 
   constructor() {
+    sessionStorage.setItem('canView','true')
     this.state.showMenuButton.set(false) // hides the app comp toolbar
     this.destroyRef.onDestroy(() => // register a destroy callback
     {
