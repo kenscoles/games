@@ -1,1 +1,16 @@
-
+@use "../../../styles" as global;
+img {
+  border: 2px solid;
+  margin: 5px;
+  width: 20%;
+  display: block; /* for centring */
+  margin-left: auto; /* for centring */
+  margin-right: auto; /* for centring */
+}
+@media screen and (max-width: global.$mobileWidth) {
+    img {
+  border: 1px solid;
+  margin: 2px;
+  width: 100%;
+}
+}

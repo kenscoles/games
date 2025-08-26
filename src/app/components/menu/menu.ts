@@ -10,9 +10,9 @@ import { State } from '../../shared/services/state';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="navigation">
-    <button matButton="elevated" [routerLink]="'/country'">Country</button>
-    <button matButton="elevated" [routerLink]="'/master'">Mastermind</button>
-    <button matButton="elevated" [routerLink]="'/styles'">Styles</button>
+    <button matButton="filled" [routerLink]="'/country'">Country</button>
+    <button matButton="filled" [routerLink]="'/master'">Mastermind</button>
+    <button matButton="filled" [routerLink]="'/styles'">Country lists</button>
   </div>
 
   `,
@@ -25,6 +25,7 @@ export class Menu {
   constructor() {
     sessionStorage.setItem('canView','true')
     this.state.showMenuButton.set(false) // hides the app comp toolbar
+    
     this.destroyRef.onDestroy(() => // register a destroy callback
     {
       this.state.showMenuButton.set(true) // shows app toolbar when menu closes

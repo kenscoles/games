@@ -1,17 +1,45 @@
-<p>styles works!</p>
-<ul>
-    <li>Coffee</li>
-    <li>Tea</li>
-    <li>Milk</li>
-</ul>
-<button type="button">Click Me!</button>
-<p></p>
-<input type="text">Input
-<p>
-<h1>Heading 1</h1>
-<h2>Heading 2</h2>
-<h3>Heading 3</h3>
-<h4>Heading 4</h4>
-<h5>Heading 5</h5>
-<h6>Heading 6</h6>
 
+<div style="width: 10%;  text-align:justify; margin-right: auto;margin-left: auto;">
+ <mat-form-field appearance="fill">
+        <mat-label>region</mat-label>
+        <mat-select #reg (valueChange)="onSelected(reg.value)">
+            @for (item of regions; track item) {
+                <mat-option [value]= item >{{item}}</mat-option>
+                }
+        </mat-select>
+    </mat-form-field>
+</div>
+    <p>
+    @if(this.codes.hasValue()){
+
+<table style="width: 40%;  text-align:justify; margin-right: auto;margin-left: auto;">
+  <caption><h3>List of country data</h3></caption>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Code</th>
+      <th>Capital</th>
+      @if(selection()==="All"){
+      <th>Region</th>
+      }
+      <th>Flag</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    @for (item of myCountryData(); track item.code; let i = $index){
+      @let k = item.flag+'?a='+myDate;
+      <!-- just testing! -->
+    <tr>
+      <td>{{ item.name }}</td>
+      <td>{{ item.code }}</td>
+      <td>{{ item.capital }}</td>
+      @if(selection()==="All"){
+      <td>{{ item.region }}</td>
+      }
+      <td (click)="collectData(item)"><img [src]="k" ></td>
+    </tr>
+    }
+  </tbody>
+</table>
+} @else {<h3>Please wait...</h3>}

@@ -24,7 +24,7 @@ h2 {
   justify-content: center;
   list-style: none;
   margin: 0;
-  background: rgb(107, 107, 196);
+  background: rgb(203, 208, 224);
   color: bisque;
 }
 
@@ -37,6 +37,9 @@ h2 {
 
 .navigation a:hover {
   background: #1565C0;
+}
+button {
+  margin: 5px;
 }
 
 @media (max-width: $mobileWidth) {

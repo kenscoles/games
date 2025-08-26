@@ -15,7 +15,7 @@ export const routes: Routes = [
 
             },
             {
-                path: 'country', title: 'country', canActivate: [redirectGuard],
+                path: 'country', title: 'country',
                 loadComponent: () => import('./components/country/country').then(c => c.Country)
 
             },

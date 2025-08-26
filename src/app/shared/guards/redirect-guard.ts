@@ -5,6 +5,7 @@ import { CanActivateFn, Router } from '@angular/router';
 export const redirectGuard: CanActivateFn = () => {
   const myRouter = inject(Router)
   if (sessionStorage.getItem('canView') === 'true') {
+    sessionStorage.removeItem('canView')
     return true;
   }
   //console.log("True")

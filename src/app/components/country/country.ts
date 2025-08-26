@@ -10,6 +10,7 @@ import { myCode } from '../../country.interface';
 import { countryAdapter } from '../../country.adapter';
 import { FormsModule } from '@angular/forms';
 import { Util, debouncedSignal } from '../../shared/services/util';
+import { State } from '../../shared/services/state';
 
 @Component({
   selector: 'app-country',
@@ -20,6 +21,8 @@ import { Util, debouncedSignal } from '../../shared/services/util';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Country {
+  state = inject(State)
+myDate = Date.now()
   code = signal("GB")
   chosenCode = signal('GB');
   debounceSearchValue = debouncedSignal(this.chosenCode, 2000); // default is 500
@@ -33,7 +36,7 @@ export class Country {
   private util = inject(Util)
 
   constructor() {
-
+this.chosenCode.set(this.state.myCountry())
     effect(() => {
       if (this.country.hasValue() && this.codes.hasValue()) {
         //console.log("original: ", this.country.value())
@@ -48,6 +51,8 @@ export class Country {
               ({ code: country.cca3, name: country.name.common })));
           this.util.objsort(this.result, "name", "asc") // sort into alpha order
           this.isCountryListBuilt = true
+          console.log("code: ", this.result)
+          console.log("codes value: ", this.codes.value())
         }
       }
     })
