@@ -22,7 +22,7 @@ import { State } from '../../shared/services/state';
 })
 export class Country {
   state = inject(State)
-myDate = Date.now()
+  myDate = Date.now()
   code = signal("GB")
   chosenCode = signal('GB');
   debounceSearchValue = debouncedSignal(this.chosenCode, 2000); // default is 500
@@ -36,7 +36,7 @@ myDate = Date.now()
   private util = inject(Util)
 
   constructor() {
-this.chosenCode.set(this.state.myCountry())
+    this.chosenCode.set(this.state.myCountry())
     effect(() => {
       if (this.country.hasValue() && this.codes.hasValue()) {
         //console.log("original: ", this.country.value())

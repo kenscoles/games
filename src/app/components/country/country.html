@@ -44,8 +44,8 @@
     </div>
     <div class="columnRight">
         @if(country.hasValue() && countryData()){
-            @let k = countryData().flags.svg+'?a='+myDate;
-        <img class="flag" [src]="k" />
+            @let uniqueSource = countryData().flags.svg+'?a='+myDate;
+        <img class="flag" [src]="uniqueSource" />
 
         }
     </div>
