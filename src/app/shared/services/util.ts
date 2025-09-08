@@ -76,7 +76,7 @@ var myArray = ['a','b','c','d','e'];
   
 }
 export function debouncedSignal<T>(
-  sourceSignal: Signal<T>, debounceTimeInMs = 500): Signal<T> {
+  sourceSignal: Signal<T>, debounceTimeInMs = 500): Signal<T> {  
   const debounceSignal = signal(sourceSignal());
   effect(
     (onCleanup) => {
@@ -85,7 +85,6 @@ export function debouncedSignal<T>(
         () => debounceSignal.set(value),
         debounceTimeInMs
       );
-
       // The `onCleanup` argument is a function which is called when the effect
       // runs again (and when it is destroyed).
       // By clearing the timeout here we achieve proper debouncing.

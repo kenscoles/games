@@ -1,14 +1,17 @@
 <div class="row">
     <div class="columnLeft">
+       <h5>chosenCode: {{chosenCode()}}</h5>
+       <h5>DebounceSearchValue: {{debounceSearchValue()}}</h5>
+       <button (click)="test()">Test</button>
         <mat-form-field style="width:100px">
             <mat-label>enter code</mat-label>
             <input matInput [ngModel]="chosenCode()"
-                (ngModelChange)="chosenCode.set($any($event)); selectedValue=$event.toUpperCase()">
+                (ngModelChange)="chosenCode.set($any($event)) ">
         </mat-form-field>
         <div class="divider"></div>
         <mat-form-field>
             <mat-label>pick a country</mat-label>
-            <mat-select [(ngModel)]="selectedValue" (ngModelChange)=" this.chosenCode.set(this.selectedValue)"
+            <mat-select [ngModel]="chosenCode()" (ngModelChange)=" chosenCode.set($any($event))"
                 name="code">
                 @for (item of result; track item.code) {
                 <mat-option [value]="item.code">{{item.name}}</mat-option>

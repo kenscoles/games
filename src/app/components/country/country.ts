@@ -23,12 +23,11 @@ import { State } from '../../shared/services/state';
 export class Country {
   state = inject(State)
   myDate = Date.now()
-  code = signal("GB")
-  chosenCode = signal('GB');
-  debounceSearchValue = debouncedSignal(this.chosenCode, 2000); // default is 500
+  code = signal("GBR") // will be picked up from state service
+  chosenCode = signal('GBR');
+  debounceSearchValue = debouncedSignal(this.chosenCode, 500); // default is 500
   country = httpResource<any>(() => `https://restcountries.com/v3.1/alpha/${this.code()}`);
   codes = httpResource<any>(() => 'https://restcountries.com/v3.1/all?fields=name,cca3')
-  selectedValue = "GB"
   result: myCode[] = []
   isCountryListBuilt = false;
   countryData = signal<any | undefined>('')
@@ -36,7 +35,7 @@ export class Country {
   private util = inject(Util)
 
   constructor() {
-    this.chosenCode.set(this.state.myCountry())
+    this.chosenCode.set(this.state.myCountry()) // IS THIS RIGHT ??????
     effect(() => {
       if (this.country.hasValue() && this.codes.hasValue()) {
         //console.log("original: ", this.country.value())
@@ -57,9 +56,14 @@ export class Country {
       }
     })
     effect(() => { // fires when debounceSearchValue changes
+      
       this.code.set(this.debounceSearchValue())
     })
   }
+  test(){
+    this.chosenCode.set('FRA')
+  }
+
 }
 
 

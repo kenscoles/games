@@ -1,4 +1,7 @@
-
+<mat-form-field style="width:150px">
+    <mat-label>Search</mat-label>
+<input matInput [ngModel]="searchInput()" (ngModelChange)="searchProduct($event)" />
+</mat-form-field>
 <div style="width: 10%;  text-align:justify; margin-right: auto;margin-left: auto;">
  <mat-form-field appearance="fill">
         <mat-label>region</mat-label>
@@ -10,36 +13,37 @@
     </mat-form-field>
 </div>
     <p>
-    @if(this.codes.hasValue()){
+    @if(this.codes.hasValue() && this.filtered()!==''){
 
 <table style="width: 40%;  text-align:justify; margin-right: auto;margin-left: auto;">
   <caption><h3>List of country data</h3></caption>
   <thead>
     <tr>
       <th>Name</th>
+      <th>--</th>
       <th>Code</th>
       <th>Capital</th>
       @if(selection()==="All"){
       <th>Region</th>
       }
-      <th>Flag</th>
     </tr>
   </thead>
   <tbody>
 
-    @for (item of myCountryData(); track item.code; let i = $index){
-      @let k = item.flag+'?a='+myDate;
-      <!-- just testing! -->
+    @for (item of filtered(); track item.code; let i = $index){
     <tr>
       <td>{{ item.name }}</td>
+      <td><button matButton="outlined" (click)="collectData(item)">view</button></td>
       <td>{{ item.code }}</td>
       <td>{{ item.capital }}</td>
       @if(selection()==="All"){
       <td>{{ item.region }}</td>
       }
-      <td (click)="collectData(item)"><img [src]="k" ></td>
+       
     </tr>
     }
   </tbody>
 </table>
 } @else {<h3>Please wait...</h3>}
+
+
