@@ -5,11 +5,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
-import { Util } from '../../shared/services/util';
+import { Util , debouncedSignal} from '../../shared/services/util';
 import { State } from '../../shared/services/state';
 import { Router } from '@angular/router';
-import { toObservable, toSignal } from '@angular/core/rxjs-interop';
-import { debounceTime } from 'rxjs';
+
 
 
 @Component({
@@ -21,11 +20,10 @@ import { debounceTime } from 'rxjs';
 })
 export class Styles {
 
-  private util = inject(Util)
+  #util = inject(Util)
   router = inject(Router)
   state = inject(State)
   selection = signal("All")
-  myCountryData = signal<any | undefined>('')
   countryData = signal<any | undefined>('')
   result: any[] = []
   regions: string[] = []
@@ -34,14 +32,15 @@ export class Styles {
   myDate = Date.now()
   //
   searchInput = signal('')
+  debounced = debouncedSignal(this.searchInput, 1000)
   filtered = linkedSignal(() => {
     return this.countryData()
-      .filter((item: {
-        name: string;}) =>
-        item.name.toLowerCase().includes(this.searchInput().toLowerCase())
+      .filter((item: { name: string; region: string }) =>
+        item.name.toLowerCase().includes(this.debounced().toLowerCase()) ||
+        item.region.toLowerCase().includes(this.debounced().toLowerCase())
       )
   });
-  
+
   constructor() {
 
     effect(() => {
@@ -51,28 +50,28 @@ export class Styles {
             (country: { cca3: string; name: { common: string }; region: string; capital: string[] }) =>
               ({ code: country.cca3, name: country.name.common, region: country.region, capital: country.capital[0] })));
           this.countryData.set(this.result)
-          if (this.selection() === "All") {
-            this.myCountryData.set(this.countryData())
-          }
-          this.util.objsort(this.countryData(), "name", "asc") // sort into alpha order
+          this.#util.objsort(this.countryData(), "name", "asc") // sort into alpha order
+
           this.regions = Array.from(new Set(this.codes.value().map((obj: { region: any; }) => obj.region))) // get unique values
           this.regions.unshift("All") // add this to the beginning
-          console.log("regions", this.regions)
-          console.log("countryData", this.countryData())
+          
           this.isDataLoaded = true // flag up that this has been done
         }
       }
     })
-  }
+    effect(() => { // fires when debounceSearchValue changes
+      this.searchProduct(this.debounced())
+    })
+  } // end of constructor //
 
   onSelected(loc: string) { // filter the data by region
 
     this.selection.set(loc)
     if (this.selection() === "All") {
-      this.myCountryData.set(this.countryData())
+      this.searchInput.set("")
     }
     else {
-      this.myCountryData.set(this.countryData().filter((t: { region: string; }) => t.region == this.selection()))
+      this.searchInput.set(loc)
     }
 
   }
@@ -83,19 +82,11 @@ export class Styles {
 
 
   }
-  show(){
-
-    console.log("filtered", this.filtered() )
-    this.myCountryData.set(this.filtered())
+  show() {
+    console.log("filtered", this.filtered())
   }
 
   searchProduct(searchText: string): void {
     this.searchInput.set(searchText);
-   this.myCountryData.set(this.filtered())
+  }
 }
-}
-
-
-///
-
-///

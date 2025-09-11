@@ -7,10 +7,16 @@ img {
   margin-left: auto; /* for centring */
   margin-right: auto; /* for centring */
 }
+table {
+width: 30%;
+}
 @media screen and (max-width: global.$mobileWidth) {
     img {
   border: 1px solid;
   margin: 2px;
   width: 100%;
+}
+table {
+width: 90%;
 }
 }

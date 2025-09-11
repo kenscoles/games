@@ -1,45 +1,38 @@
-<mat-form-field style="width:150px">
-    <mat-label>Search</mat-label>
-<input matInput [ngModel]="searchInput()" (ngModelChange)="searchProduct($event)" />
-</mat-form-field>
+
 <div style="width: 10%;  text-align:justify; margin-right: auto;margin-left: auto;">
- <mat-form-field appearance="fill">
+ <mat-form-field style="width:150px" appearance="fill">
         <mat-label>region</mat-label>
         <mat-select #reg (valueChange)="onSelected(reg.value)">
             @for (item of regions; track item) {
                 <mat-option [value]= item >{{item}}</mat-option>
                 }
         </mat-select>
-    </mat-form-field>
+  </mat-form-field>
+  <mat-form-field style="width:150px">
+    <mat-label>Search</mat-label>
+<!-- <input matInput [ngModel]="searchInput()" (ngModelChange)="searchProduct($event)" /> -->
+<input matInput [ngModel]="searchInput()" (ngModelChange)="searchInput.set($any($event))" />
+</mat-form-field>
 </div>
     <p>
     @if(this.codes.hasValue() && this.filtered()!==''){
 
-<table style="width: 40%;  text-align:justify; margin-right: auto;margin-left: auto;">
+<table style="text-align:justify; margin-right: auto;margin-left: auto;">
   <caption><h3>List of country data</h3></caption>
   <thead>
     <tr>
       <th>Name</th>
-      <th>--</th>
-      <th>Code</th>
-      <th>Capital</th>
-      @if(selection()==="All"){
+      <th></th>
       <th>Region</th>
-      }
     </tr>
   </thead>
   <tbody>
 
-    @for (item of filtered(); track item.code; let i = $index){
+    @for (item of filtered(); track item.code;){
     <tr>
       <td>{{ item.name }}</td>
       <td><button matButton="outlined" (click)="collectData(item)">view</button></td>
-      <td>{{ item.code }}</td>
-      <td>{{ item.capital }}</td>
-      @if(selection()==="All"){
       <td>{{ item.region }}</td>
-      }
-       
     </tr>
     }
   </tbody>

@@ -42,9 +42,9 @@ export class Country {
           console.log("select now built") // countries and cca3 codes
           this.#resourcesService.makeSelect()
         }
-        else {
+       
           this.result = this.#state.codes()
-        }
+       
       }
     })
     effect(() => { // fires when debounceSearchValue changes
