@@ -50,17 +50,11 @@
     </td>
     }
     <td>
-      <button appDebounceClick mat-raised-button color="primary" [debounceTime]="1000"
+    <button  mat-raised-button color="primary" [debounceTime]="800"
         (debounceClick)="onGuess()">Guess</button>
     </td>
   </tr>
-  <!-- <tr>
-    <td><span style="width: 100px;" [style]="getStyle(combination.items[0].toString())">&#9898;</span>
-      <span style="width: 100px;" [style]="getStyle(combination.items[1].toString())">&#9898;</span>
-      <span style="width: 100px;" [style]="getStyle(combination.items[2].toString())">&#9898;</span>
-      <span style="width: 100px;" [style]="getStyle(combination.items[3].toString())">&#9898;</span>
-    </td>
-  </tr> -->
+ 
   }
   @if (gameLost) {
   <tr>

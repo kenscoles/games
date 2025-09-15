@@ -5,8 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-
-import { DebounceClickDirective } from '../../../shared/directives/debounce-click.directive';
+import { Debounce } from '../../../shared/directives/debounce';
 import { Util } from '../../../shared/services/util';
 import { FillPipe } from '../../../shared/pipes/fill.pipe';
 
@@ -15,7 +14,8 @@ import { FillPipe } from '../../../shared/pipes/fill.pipe';
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.css'],
   standalone: true,
-  imports: [FormsModule, MatButtonModule, MatInputModule, MatSelectModule,MatGridListModule, DebounceClickDirective, FillPipe]
+  imports: [FormsModule, MatButtonModule, MatInputModule, MatSelectModule,MatGridListModule,
+       Debounce, FillPipe]
 })
 export class BoardComponent implements OnInit {
 
