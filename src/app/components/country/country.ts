@@ -4,7 +4,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCheckboxModule } from '@angular/material/checkbox';
 import { myCode } from '../../country.interface';
 import { FormsModule } from '@angular/forms';
 import { debouncedSignal } from '../../shared/services/util';
@@ -14,7 +13,7 @@ import { Resources } from '../../shared/services/resources';
 @Component({
   selector: 'app-country',
   imports: [CommonModule, FormsModule, MatInputModule, MatButtonModule,
-    MatFormFieldModule, MatSelectModule, MatCheckboxModule],
+    MatFormFieldModule, MatSelectModule],
   templateUrl: './country.html',
   styleUrl: './country.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -24,8 +23,8 @@ export class Country {
   #resourcesService = inject(Resources)
   myDate = Date.now()
   code = signal("GBR") // will be picked up from state service
-  chosenCode = signal('GBR');
-  debounceSearchValue = debouncedSignal(this.chosenCode, 1000); // default is 500
+  chosenCode = signal(this.#state.myCountry());
+  debounceSearchValue = debouncedSignal(this.chosenCode, 500); // default is 500
   country = this.#resourcesService.getCountry(this.code) /////////////////// TEST ONLY ///////////////////
   result: myCode[] = []
   countryData = signal<any | undefined>('')
@@ -37,23 +36,25 @@ export class Country {
     effect(() => {
       if (this.country.hasValue()) {
         this.countryData.set(this.#resourcesService.adaptData(this.country))
-        
+
         if (!this.#state.isTheSelectBuilt()) { // get data for and build select list of
           console.log("select now built") // countries and cca3 codes
           this.#resourcesService.makeSelect()
         }
-       
-          this.result = this.#state.codes()
-       
+
+        this.result = this.#state.codes() // NB uses a ready-made list of codes
+
       }
     })
-    effect(() => { // fires when debounceSearchValue changes
+    effect(() => { // fires when debounceSearchValue changes ie after the pause
       this.code.set(this.debounceSearchValue())
+      console.log("effect fired - sync code with debounced signal")
     })
   }
   test() {
     // this.chosenCode.set('FRA')
-    console.log("country res", this.country.value())
+    // console.log("country res", this.country.value())
+    this.#state.showCountry.set(false)
   }
 
 }

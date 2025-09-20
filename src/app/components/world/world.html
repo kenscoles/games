@@ -1,0 +1,39 @@
+@if(!state.showCountry()){
+<div style="width: 10%;  text-align:justify; margin-right: auto;margin-left: auto;">
+    <div >
+</div>    
+<mat-form-field style="width:150px">
+        <mat-label>Search</mat-label>
+        <input matInput [ngModel]="searchInput()" (ngModelChange)="searchInput.set($any($event))" /> 
+    </mat-form-field>
+</div>
+<p>
+    @if(this.codes.hasValue() && this.filtered()!==''){
+
+<table style="text-align:justify; margin-right: auto;margin-left: auto;">
+    <caption>
+        <h3>List of country data</h3>
+    </caption>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+            <th>Region</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @for (item of filtered(); track item.code;){
+        <tr>
+            <td>{{ item.name }}</td>
+            <td><button matButton="outlined" (click)="collectData(item)">view</button></td>
+            <td>{{ item.region }}</td>
+        </tr>
+        }
+    </tbody>
+</table>
+} @else {<h3>Please wait...</h3>}
+}
+@if(state.showCountry()){
+    <app-country></app-country>
+}

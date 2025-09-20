@@ -1,13 +1,14 @@
 <div class="row">
     <div class="columnLeft">
-       <h5>chosenCode: {{chosenCode()}}</h5>
+        <button matButton="outlined" (click)="test()">back to list</button>
+       <!-- <h5>chosenCode: {{chosenCode()}}</h5>
        <h5>DebounceSearchValue: {{debounceSearchValue()}} (11/9/25 ver)</h5>
-       <!-- <button (click)="test()">Test</button> -->
-        <mat-form-field style="width:100px">
+       <h5>Code: {{code()}}</h5> -->
+        <!-- <mat-form-field style="width:100px">
             <mat-label>enter code</mat-label>
             <input matInput [ngModel]="chosenCode()"
                 (ngModelChange)="chosenCode.set($any($event)) ">
-        </mat-form-field>
+        </mat-form-field>-->
         <div class="divider"></div>
         <mat-form-field>
             <mat-label>pick a country</mat-label>
@@ -52,5 +53,4 @@
 
         }
     </div>
-   
 </div>

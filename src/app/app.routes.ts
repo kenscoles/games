@@ -19,6 +19,11 @@ export const routes: Routes = [
                 loadComponent: () => import('./components/country/country').then(c => c.Country)
 
             },
+            {
+                path: 'world', title: 'world',
+                loadComponent: () => import('./components/world/world').then(c => c.World)
+
+            },
              {
                 path: 'styles', title: 'styles', canActivate: [redirectGuard],
                 loadComponent: () => import('./test/styles/styles').then(c => c.Styles)

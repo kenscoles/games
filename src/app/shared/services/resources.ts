@@ -13,7 +13,7 @@ export class Resources {
 
   #state = inject(State)
   #util = inject(Util)
-  readonly codes = httpResource<any>(() => 'https://restcountries.com/v3.1/all?fields=name,cca3')
+  readonly codes = httpResource<any>(() => 'https://restcountries.com/v3.1/all?fields=name,cca3,capital,flags,region')
   result: myCode[] = []
   // Factory method for reactive data fetching
   createUserResource = ($countryId: Signal<any>) => httpResource<any>(() => (

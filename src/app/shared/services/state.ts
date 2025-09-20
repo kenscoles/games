@@ -11,4 +11,5 @@ export class State {
   countryData = signal<any | undefined>('')
   isTheSelectBuilt = signal<boolean>(false)
   codes = signal<any | undefined>('')
+  showCountry = signal<boolean>(false)
 }

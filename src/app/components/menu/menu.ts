@@ -10,9 +10,10 @@ import { State } from '../../shared/services/state';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="navigation">
-    <button matButton="filled" [routerLink]="'/country'">Country</button>
+    <!-- <button matButton="filled" [routerLink]="'/country'">Country</button> -->
     <button matButton="filled" [routerLink]="'/master'">Mastermind</button>
-    <button matButton="filled" [routerLink]="'/styles'">Country lists</button>
+    <button matButton="filled" [routerLink]="'/world'">World</button>
+    <!-- <button matButton="filled" [routerLink]="'/styles'">Country lists</button> -->
   </div>
 
   `,

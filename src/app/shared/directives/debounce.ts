@@ -1,3 +1,4 @@
+// NB This does not work with Angular Material form fields * * *
 import { Directive, effect, input, model, numberAttribute, output } from '@angular/core';
 @Directive({
   selector: '[debounceTime]',
