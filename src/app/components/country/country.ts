@@ -28,10 +28,10 @@ export class Country {
   country = this.#resourcesService.getCountry(this.code) /////////////////// TEST ONLY ///////////////////
   result: myCode[] = []
   countryData = signal<any | undefined>('')
-
+  codes = this.#state.codes
 
   constructor() {
-    this.chosenCode.set(this.#state.myCountry()) // IS THIS RIGHT ??????
+    //this.chosenCode.set(this.#state.myCountry()) // IS THIS RIGHT ??????
 
     effect(() => {
       if (this.country.hasValue()) {
@@ -42,8 +42,9 @@ export class Country {
           this.#resourcesService.makeSelect()
         }
 
-        this.result = this.#state.codes() // NB uses a ready-made list of codes
-
+       // this.result = this.#state.codes() // NB uses a ready-made list of codes
+        //console.log("result ", this.result)
+        //console.log("codes ", this.codes())
       }
     })
     effect(() => { // fires when debounceSearchValue changes ie after the pause

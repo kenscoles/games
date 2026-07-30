@@ -37,3 +37,14 @@
 @if(state.showCountry()){
     <app-country></app-country>
 }
+<button (click)="test()">test</button>
+<!-- @if (countries.isLoading()) { <p>Loading countries...</p> }
+    @if (countries.error()) { <p>Error loading data.</p> }
+    
+    @if (countries.value()) {
+      <ul>
+        @for (country of countries.value(); track country.cca3) {
+          <li>{{ country.name.common }}</li>
+        }
+      </ul>
+    } -->

@@ -1,0 +1,15 @@
+@if(myCountry()){
+@let country = myCountry().data.objects[0];
+    
+
+          <p>Common name: {{country.names.common}}</p>
+          <p>Alt names: {{country.names.alternates}}</p>
+          <!-- <p>Resource {{countryResource.value() | json}}</p> -->
+          <p>Code: {{country.codes.alpha_3}}</p>
+          <p>Region: {{country.region}}</p>
+          <p>Sub region: {{country.subregion}}</p>
+          <p>Population: {{country.population|number}}</p>
+         
+
+}
+         

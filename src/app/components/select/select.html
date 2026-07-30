@@ -1,0 +1,49 @@
+
+<button (click)="show()">show list</button>
+
+
+
+<mat-form-field>
+            <mat-label>pick a country</mat-label>
+            <mat-select [ngModel]="mySelection()" (ngModelChange)=" mySelection.set($any($event))"
+                name="code">
+                @for (item of countries; track item.Name) {
+                <mat-option [value]="item.cca3">{{item.Name}}</mat-option>
+                }
+            </mat-select>
+</mat-form-field>
+
+  <p>You selected : <strong>{{ mySelection() }}</strong></p>
+
+  <div>
+      
+      @if (countryResource.isLoading()) {
+        <p>Loading country details...</p>
+      }
+
+      @if (countryResource.error()) {
+        <p style="color: red;">Error fetching data. Check your API key or code.</p>
+      }
+
+      @if (countryResource.value(); as response) {
+        <!-- v5 returns an object wrapped in a 'data' array -->
+        @if (response.data && response.data.length > 0) {
+          @let country = response.data.objects[0];
+          <div>
+            <h2>{{ country.names?.common }}</h2>
+            
+            <!-- v5 uses an array of objects for capitals -->
+            <p>Capital: {{ country.capitals?.[0]?.name || 'N/A' }}</p>
+            <p>Population: {{ country.population | number }}</p>
+          </div>
+        } @else {
+          @let country = countryResource.value().data.objects[0]; <p>Common name: {{country.names.common}}</p>
+          <p>Alt names: {{country.names.alternates}}</p>
+          <!-- <p>Resource {{countryResource.value() | json}}</p> -->
+          <p>Code: {{country.codes.alpha_3}}</p>
+          <p>Region: {{country.region}}</p>
+          <p>Sub region: {{country.subregion}}</p>
+          <p>Population: {{country.population|number}}</p>
+        }
+      }
+    </div>

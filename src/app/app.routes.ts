@@ -24,6 +24,21 @@ export const routes: Routes = [
                 loadComponent: () => import('./components/world/world').then(c => c.World)
 
             },
+            {
+                path: 'test', title: 'test',
+                loadComponent: () => import('./components/country-search-component/country-search-component').then(c => c.CountrySearchComponent)
+
+            },
+            {
+                path: 'select', title: 'select',
+                loadComponent: () => import('./components/select/select').then(c => c.Select)
+
+            },
+            {
+                path: 'test1', title: 'test1',
+                loadComponent: () => import('./components/test/test').then(c => c.Test)
+
+            },
              {
                 path: 'styles', title: 'styles', canActivate: [redirectGuard],
                 loadComponent: () => import('./test/styles/styles').then(c => c.Styles)

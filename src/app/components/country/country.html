@@ -14,7 +14,7 @@
             <mat-label>pick a country</mat-label>
             <mat-select [ngModel]="chosenCode()" (ngModelChange)=" chosenCode.set($any($event))"
                 name="code">
-                @for (item of result; track item.code) {
+                @for (item of codes(); track item.code) {
                 <mat-option [value]="item.code">{{item.name}}</mat-option>
                 }
             </mat-select>

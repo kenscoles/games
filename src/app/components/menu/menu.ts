@@ -13,6 +13,10 @@ import { State } from '../../shared/services/state';
     <!-- <button matButton="filled" [routerLink]="'/country'">Country</button> -->
     <button matButton="filled" [routerLink]="'/master'">Mastermind</button>
     <button matButton="filled" [routerLink]="'/world'">World</button>
+    <button matButton="filled" [routerLink]="'/test'">New</button>
+    <button matButton="filled" [routerLink]="'/select'">Test select</button>
+    <button matButton="filled" [routerLink]="'/test1'">Test1</button>
+    <button [routerLink]="'/master'">Mastermind</button>
     <!-- <button matButton="filled" [routerLink]="'/styles'">Country lists</button> -->
   </div>
 
