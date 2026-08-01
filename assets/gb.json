@@ -1,0 +1,385 @@
+{
+    "data": {
+        "meta": {
+            "count": 1,
+            "duration": 35,
+            "limit": 25,
+            "more": false,
+            "offset": 0,
+            "request_id": "d6a0b843-a51d-4ab7-806b-57778fbc1426",
+            "total": 1
+        },
+        "objects": [
+            {
+                "_match": [
+                    {
+                        "path": "codes.alpha_3",
+                        "value": "GBR"
+                    }
+                ],
+                "_meta": {
+                    "lastUpdatedTimestamp": 1784824394
+                },
+                "area": {
+                    "kilometers": 242900,
+                    "miles": 93784.2
+                },
+                "assets": [
+                ],
+                "borders": [
+                    "IRL"
+                ],
+                "calling_codes": [
+                    "44"
+                ],
+                "capitals": [
+                    {
+                        "attributes": {
+                            "administrative": false,
+                            "constitutional": false,
+                            "executive": false,
+                            "judicial": false,
+                            "legislative": false,
+                            "primary": true
+                        },
+                        "coordinates": {
+                            "lat": 51.5,
+                            "lng": -0.08
+                        },
+                        "name": "London"
+                    }
+                ],
+                "cars": {
+                    "driving_side": "left",
+                    "signs": [
+                        "GB"
+                    ]
+                },
+                "classification": {
+                    "dependency": false,
+                    "dependency_type": "",
+                    "disputed": false,
+                    "iso_status": "official",
+                    "sovereign": true,
+                    "un_member": true,
+                    "un_observer": false
+                },
+                "codes": {
+                    "alpha_2": "GB",
+                    "alpha_3": "GBR",
+                    "ccn3": "826",
+                    "cioc": "GBR",
+                    "fifa": "",
+                    "fips": "UK",
+                    "gec": "UK"
+                },
+                "continents": [
+                    "Europe"
+                ],
+                "coordinates": {
+                    "lat": 54,
+                    "lng": -2
+                },
+                "currencies": [
+                    {
+                        "code": "GBP",
+                        "name": "British pound",
+                        "symbol": "£"
+                    }
+                ],
+                "date": {
+                    "academic_year_start": {
+                        "day": 1,
+                        "month": 9
+                    },
+                    "fiscal_year_start": {
+                        "corporate": {
+                            "basis": "default",
+                            "day": 1,
+                            "month": 4
+                        },
+                        "government": {
+                            "day": 1,
+                            "month": 4
+                        },
+                        "personal": {
+                            "day": 6,
+                            "month": 4
+                        }
+                    },
+                    "start_of_week": "monday"
+                },
+                "demonyms": {
+                    "eng": {
+                        "f": "British",
+                        "m": "British"
+                    },
+                    "fra": {
+                        "f": "Britannique",
+                        "m": "Britannique"
+                    }
+                },
+                "economy": {
+                    "gini_coefficient": {
+                        "2017": 32.6,
+                        "2018": 33.7,
+                        "2019": 32.8,
+                        "2020": 32.7,
+                        "2021": 32.4
+                    }
+                },
+                "flag": {
+                    "colors": {
+                        "dominant": "#fbf8f3",
+                        "palette": [
+                            {
+                                "hex": "#fbf8f3",
+                                "proportion": 0.269148611534941
+                            },
+                            {
+                                "hex": "#0e256d",
+                                "proportion": 0.284711626487641
+                            },
+                            {
+                                "hex": "#edebf3",
+                                "proportion": 0.0668294171498322
+                            },
+                            {
+                                "hex": "#c30c10",
+                                "proportion": 0.329874885566067
+                            },
+                            {
+                                "hex": "#d03d52",
+                                "proportion": 0.0390601159597193
+                            },
+                            {
+                                "hex": "#cf211d",
+                                "proportion": 0.00976502898992981
+                            },
+                            {
+                                "hex": "#7d8db0",
+                                "proportion": 0.000610314311870613
+                            },
+                            {
+                                "hex": "#2a4700",
+                                "proportion": 0
+                            }
+                        ],
+                        "prominent": "#c30c10",
+                        "swatches": {
+                            "dark_muted": "#2a4700",
+                            "dark_vibrant": "#0e256d",
+                            "light_muted": "#fbf8f3",
+                            "light_vibrant": null,
+                            "muted": "#7d8db0",
+                            "vibrant": "#c30c10"
+                        }
+                    },
+                    "description": "The flag of the United Kingdom — the Union Jack — has a blue field. It features the white-edged red cross of Saint George superimposed on the diagonal red cross of Saint Patrick which is superimposed on the diagonal white cross of Saint Andrew.",
+                    "emoji": "🇬🇧",
+                    "html_entity": "&#127468;&#127463;",
+                    "unicode": "U+1F1EC U+1F1E7",
+                    "url_png": "https://flags.restcountries.com/v5/w640/gb.png",
+                    "url_svg": "https://flags.restcountries.com/v5/svg/gb.svg"
+                },
+                "government_type": "Unitary parliamentary constitutional monarchy",
+                "landlocked": false,
+                "languages": [
+                    {
+                        "bcp47": "en",
+                        "iso639_1": "en",
+                        "iso639_2b": "eng",
+                        "iso639_2t": "eng",
+                        "iso639_3": "eng",
+                        "name": "English",
+                        "native_name": "English"
+                    }
+                ],
+                "leaders": [
+                    {
+                        "message": "data.leaders is only available on paid plans. Go to https://restcountries.com/plans to make updates to your account.",
+                        "sample": "https://files-03.restcountries.com/countries.00/sample.leaders.json"
+                    }
+                ],
+                "links": {
+                    "google_maps": "https://goo.gl/maps/FoDtc3UKMkFsXAjHA",
+                    "official": "https://www.gov.uk",
+                    "open_street_maps": "https://www.openstreetmap.org/relation/62149",
+                    "wikipedia": "https://en.wikipedia.org/wiki/United_Kingdom"
+                },
+                "memberships": {
+                    "african_union": false,
+                    "arab_league": false,
+                    "asean": false,
+                    "brics": false,
+                    "commonwealth": true,
+                    "eu": false,
+                    "eurozone": false,
+                    "g20": true,
+                    "g7": true,
+                    "nato": true,
+                    "oecd": true,
+                    "opec": false,
+                    "schengen": false,
+                    "un": true
+                },
+                "names": {
+                    "alternates": [
+                        "UK",
+                        "Great Britain",
+                        "Britain"
+                    ],
+                    "common": "United Kingdom",
+                    "native": {
+                        "eng": {
+                            "common": "United Kingdom",
+                            "official": "United Kingdom of Great Britain and Northern Ireland"
+                        }
+                    },
+                    "official": "United Kingdom of Great Britain and Northern Ireland",
+                    "translations": {
+                        "ara": {
+                            "common": "المملكة المتحدة",
+                            "official": "المملكة المتحدة لبريطانيا العظمى وايرلندا الشمالية"
+                        },
+                        "bre": {
+                            "common": "Rouantelezh-Unanet",
+                            "official": "Rouantelezh-Unanet Breizh-Veur ha Norzhiwerzhon"
+                        },
+                        "ces": {
+                            "common": "Spojené království",
+                            "official": "Spojené království Velké Británie a Severního Irska"
+                        },
+                        "cym": {
+                            "common": "United Kingdom",
+                            "official": "United Kingdom of Great Britain and Northern Ireland"
+                        },
+                        "deu": {
+                            "common": "Vereinigtes Königreich",
+                            "official": "Vereinigtes Königreich Großbritannien und Nordirland"
+                        },
+                        "est": {
+                            "common": "Suurbritannia",
+                            "official": "Suurbritannia ja Põhja-Iiri Ühendkuningriik"
+                        },
+                        "fas": {
+                            "common": "انگلیس",
+                            "official": "پادشاهی متحد بریتانیای کبیر و ایرلند شمالی"
+                        },
+                        "fin": {
+                            "common": "Yhdistynyt kuningaskunta",
+                            "official": "Ison-Britannian ja Pohjois-Irlannin yhdistynyt kuningaskunta"
+                        },
+                        "fra": {
+                            "common": "Royaume-Uni",
+                            "official": "Royaume-Uni de Grande-Bretagne et d'Irlande du Nord"
+                        },
+                        "hrv": {
+                            "common": "Ujedinjeno Kraljevstvo",
+                            "official": "Ujedinjeno Kraljevstvo Velike Britanije i Sjeverne Irske"
+                        },
+                        "hun": {
+                            "common": "Egyesült Királyság",
+                            "official": "Nagy-Britannia és Észak-Írország Egyesült Királysága"
+                        },
+                        "ind": {
+                            "common": "Britania Raya",
+                            "official": "Perserikatan Kerajaan Britania Raya dan Irlandia Utara"
+                        },
+                        "ita": {
+                            "common": "Regno Unito",
+                            "official": "Regno Unito di Gran Bretagna e Irlanda del Nord"
+                        },
+                        "jpn": {
+                            "common": "イギリス",
+                            "official": "グレート·ブリテンおよび北アイルランド連合王国"
+                        },
+                        "kor": {
+                            "common": "영국",
+                            "official": "그레이트브리튼 북아일랜드 연합 왕국"
+                        },
+                        "nld": {
+                            "common": "Verenigd Koninkrijk",
+                            "official": "Verenigd Koninkrijk van Groot-Brittannië en Noord-Ierland"
+                        },
+                        "pol": {
+                            "common": "Zjednoczone Królestwo",
+                            "official": "Zjednoczone Królestwo Wielkiej Brytanii i Irlandii Północnej"
+                        },
+                        "por": {
+                            "common": "Reino Unido",
+                            "official": "Reino Unido da Grã-Bretanha e Irlanda do Norte"
+                        },
+                        "rus": {
+                            "common": "Великобритания",
+                            "official": "Соединенное Королевство Великобритании и Северной Ирландии"
+                        },
+                        "slk": {
+                            "common": "Veľká Británia (Spojené kráľovstvo)",
+                            "official": "Spojené kráľovstvo Veľkej Británie a SevernéhoÌrska"
+                        },
+                        "spa": {
+                            "common": "Reino Unido",
+                            "official": "Reino Unido de Gran Bretaña e Irlanda del Norte"
+                        },
+                        "srp": {
+                            "common": "Уједињено Краљевство",
+                            "official": "Уједињено Краљевство Велике Британије и Северне Ирске"
+                        },
+                        "swe": {
+                            "common": "Storbritannien",
+                            "official": "Förenade konungariket Storbritannien och Nordirland"
+                        },
+                        "tur": {
+                            "common": "Birleşik Krallık",
+                            "official": "Büyük Britanya ve Kuzey İrlanda Birleşik Krallığı"
+                        },
+                        "urd": {
+                            "common": "مملکتِ متحدہ",
+                            "official": "مملکتِ متحدہ برطانیہ عظمی و شمالی آئرلینڈ"
+                        },
+                        "zho": {
+                            "common": "英国",
+                            "official": "大不列颠及北爱尔兰联合王国"
+                        }
+                    }
+                },
+                "number_format": {
+                    "decimal_separator": ".",
+                    "thousands_separator": ","
+                },
+                "parent": {
+                    "alpha_2": "",
+                    "alpha_3": ""
+                },
+                "population": 66912637,
+                "postal_code": {
+                    "format": "@# #@@|@## #@@|@@# #@@|@@## #@@|@#@ #@@|@@#@ #@@|GIR0AA",
+                    "regex": "^(([A-Z]\\d{2}[A-Z]{2})|([A-Z]\\d{3}[A-Z]{2})|([A-Z]{2}\\d{2}[A-Z]{2})|([A-Z]{2}\\d{3}[A-Z]{2})|([A-Z]\\d[A-Z]\\d[A-Z]{2})|([A-Z]{2}\\d[A-Z]\\d[A-Z]{2})|(GIR0AA))$"
+                },
+                "region": "Europe",
+                "subregion": "Northern Europe",
+                "timezones": [
+                    "UTC-08:00",
+                    "UTC-05:00",
+                    "UTC-04:00",
+                    "UTC-03:00",
+                    "UTC-02:00",
+                    "UTC",
+                    "UTC+01:00",
+                    "UTC+02:00",
+                    "UTC+06:00"
+                ],
+                "tlds": [
+                    ".uk",
+                    ".gb"
+                ],
+                "units": {
+                    "measurement_system": "metric",
+                    "temperature_scale": "Celsius"
+                },
+                "uuid": "04f856df-5827-486d-a5a9-9788eb95bd44"
+            }
+        ]
+    }
+}
