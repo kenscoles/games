@@ -31,7 +31,7 @@ export class Select implements OnInit {
   myCountry = signal<any>("")
   //
 
-private apiKey = 'rc_live_5254adb41f674417be1e83e7a9369414';
+private apiKey = 'my key';
   
   // Use the core v5 base URL
   private baseUrl = 'https://api.restcountries.com/countries/v5';

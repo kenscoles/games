@@ -24,7 +24,7 @@ interface Country {
 export class Test2 {
 myCountries = httpResource<Country[]>(()=> 'assets/myCountries.json' )
 mySelection = signal(<string >("GBR"))
-private apiKey = 'rc_live_5254adb41f674417be1e83e7a9369414';
+private apiKey = 'my Key';
   
   // Use the core v5 base URL
   private baseUrl = 'https://api.restcountries.com/countries/v5';
