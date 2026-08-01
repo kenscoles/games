@@ -1,0 +1,35 @@
+@if (myCountries.isLoading()){
+.... loading ...
+}
+
+@if (myCountries.value()) {
+<!-- @for (item of myCountries.value() ; track item.name) {
+<h5>{{item.name}} {{item.alpha2 }} {{item.alpha3 }}</h5>
+
+} -->
+}
+<mat-form-field>
+   <mat-label>pick a country</mat-label>
+        <mat-select [ngModel]="mySelection()" (ngModelChange)=" mySelection.set($any($event))"
+            name="code">
+               @for (item of myCountries.value(); track item.name) {
+                <mat-option [value]="item.alpha3">{{item.name}}</mat-option>
+                }
+        </mat-select>
+ </mat-form-field>
+ <p>You selected : <strong>{{ mySelection() }}</strong></p>
+ @if (countryResource.isLoading()) {
+        <p>Loading country details...</p>
+      }
+      @if (countryResource.hasValue()) {
+         @let country = countryResource.value().data.objects[0]; <p>Common name: {{country.names.common}}</p>
+          <p>Alt names: {{country.names.alternates}}</p>
+          <!-- <p>Resource {{countryResource.value() | json}}</p> -->
+          <p>Code: {{country.codes.alpha_3}}</p>
+          <p>Region: {{country.region}}</p>
+          <p>Sub region: {{country.subregion}}</p>
+          <p>Population: {{country.population|number}}</p>
+          <p>Flag: <img width="96" height="72" src="{{country.flag.url_svg}}"></p>
+          <p>Border(s): {{country.borders.join(", ")}}</p>
+        }
+      

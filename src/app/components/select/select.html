@@ -16,7 +16,9 @@
   <p>You selected : <strong>{{ mySelection() }}</strong></p>
 
   <div>
-      
+      @if (countryResource.hasValue()) {
+        Yes it does
+      }
       @if (countryResource.isLoading()) {
         <p>Loading country details...</p>
       }

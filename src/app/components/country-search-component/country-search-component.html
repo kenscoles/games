@@ -9,6 +9,9 @@
           <p>Region: {{country.region}}</p>
           <p>Sub region: {{country.subregion}}</p>
           <p>Population: {{country.population|number}}</p>
+          <p>Flag : <img width="192" height="144" src="{{country.flag.url_svg}}"></p>
+          <h2>Border(s): {{country.borders.join(", ")}}</h2>
+          
          
 
 }

@@ -1,1 +1,22 @@
-<p>test works!</p>
+<label for="item-select">Choose a fruit:</label>
+
+<!-- Bind the value to the signal and listen for user changes -->
+<select 
+  id="item-select" 
+  [value]="selectedId()" 
+  (change)="onSelectionChange($event)">
+  
+  <option value="" disabled>-- Select an option --</option>
+  
+  <!-- Loop through the items signal array -->
+ @for (item of items() ?? []; track item.id) {
+  <option [value]="item.id">{{ item.name }}</option>
+}
+
+</select>
+
+<!-- Output selected state to verify it works -->
+@if (selectedId()) {
+  <p>You selected ID: <strong>{{ selectedId() }}</strong></p>
+}
+
