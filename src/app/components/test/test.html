@@ -1,22 +1,49 @@
-<label for="item-select">Choose a fruit:</label>
 
-<!-- Bind the value to the signal and listen for user changes -->
-<select 
-  id="item-select" 
-  [value]="selectedId()" 
-  (change)="onSelectionChange($event)">
-  
-  <option value="" disabled>-- Select an option --</option>
-  
-  <!-- Loop through the items signal array -->
- @for (item of items() ?? []; track item.id) {
-  <option [value]="item.id">{{ item.name }}</option>
+
+@if (myCountries.isLoading()){
+.... loading ...
 }
 
-</select>
+@if (myCountries.value()) {
+<!-- @for (item of myCountries.value() ; track item.name) {
+<h5>{{item.name}} {{item.alpha2 }} {{item.alpha3 }}</h5>
 
-<!-- Output selected state to verify it works -->
-@if (selectedId()) {
-  <p>You selected ID: <strong>{{ selectedId() }}</strong></p>
+} -->
 }
+<mat-form-field>
+   <mat-label>pick a country</mat-label>
+        <mat-select [ngModel]="mySelection()" (ngModelChange)=" mySelection.set($any($event))"
+            name="code">
+               @for (item of myCountries.value(); track item.name) {
+                <mat-option [value]="item.alpha3">{{item.name}}</mat-option>
+                }
+        </mat-select>
+ </mat-form-field>
+ 
+ @if (countryResource.hasValue()){
+@let data = countryResource.value(); 
+Independent: {{data.independent}} 
+<h4>Name: {{data.name}} Region: {{data.region}} Sub-region: {{data.subregion}}</h4>
+<h4>Population: {{data.population|number}}</h4>
+<h4>Area: {{data.area | number}}</h4>
+<h4>Population Density:{{data.populationDensity|number}}</h4>
+<p>Flag: <img style='border:1px solid #000000' width="96" height="72" src="{{data.flags.svg}}"></p>
+French Trans: {{data.translations.fr}}
+{{data.currencies[0].name}} 
+{{data.timezones[0]}} 
+
+@if(langs){
+<h4>Language(s): {{langs}}</h4>  
+}
+@if(borders){
+<h4>Border(s): {{borders}}</h4>  
+}
+<h4>Top level domain: {{data.topLevelDomain[0]}}</h4>
+
+}
+
+
+  <h3>{{countryResource.value()|json}}</h3>
+
+
 
