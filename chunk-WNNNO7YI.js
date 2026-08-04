@@ -1,0 +1,1 @@
+import{P as n,ja as e}from"./chunk-VVMLA7WC.js";var t=class o{constructor(){}showMenuButton=e(!1);myCountry=e("GBR");countryData=e("");isTheSelectBuilt=e(!1);codes=e("");showCountry=e(!1);static \u0275fac=function(a){return new(a||o)};static \u0275prov=n({token:o,factory:o.\u0275fac,providedIn:"root"})};export{t as a};
