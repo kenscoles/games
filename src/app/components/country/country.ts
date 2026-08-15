@@ -39,7 +39,7 @@ export class Country {
 
         if (!this.#state.isTheSelectBuilt()) { // get data for and build select list of
           console.log("select now built") // countries and cca3 codes
-          this.#resourcesService.makeSelect()
+          //this.#resourcesService.makeSelect()
         }
 
        // this.result = this.#state.codes() // NB uses a ready-made list of codes

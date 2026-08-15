@@ -1,49 +1,68 @@
-
-
-@if (myCountries.isLoading()){
-.... loading ...
+<body>
+   <!-- Header section -->
+    <h1>Countries Database</h1>
+@if (showList()) {   
+   <header>
+         Filter ..<input [ngModel]="searchTerm()" (ngModelChange)="searchTerm.set($any($event))">
+      
+         <table style="width: 30%;  text-align:justify;">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Code</th>
+        <th>Region</th> 
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of filtered() ; track item.name){
+      <tr>
+        <td>{{ item.name}}</td>
+        <td>{{ item.alpha3 }}</td>
+        <td>{{ item.region}}</td>
+          <button mat-raised-button (click)="getCountry(item.alpha3)">view</button>
+      </tr>
+      }
+    </tbody>
+  </table>   
+   </header>
 }
+<button [hidden]="showList()" matButton="filled"  (click)="showtheList()">Show search</button>           
+@if (countryResource.hasValue()){
+            @let data = countryResource.value();
+            <p><img style = "padding: 10px 50px 50px 10px;" width="192" height="144" src="{{data.flags.svg}}"></p>
+            }
+         
+      
 
-@if (myCountries.value()) {
-<!-- @for (item of myCountries.value() ; track item.name) {
-<h5>{{item.name}} {{item.alpha2 }} {{item.alpha3 }}</h5>
+   <main>
+      <section>
+         @if (myCountries.isLoading()){
+         .... loading ...
+         }
+         @if (countryResource.hasValue()){
+         @let data = countryResource.value();
+         <h3>Independent: @if(data.independent) {<span>YES</span>}
+                        @else {<span>NO</span>} </h3>
+         <h3>Name: <span>{{data.name}} </span> <span>({{data.translations.fr}})</span> Capital: <span>{{data.capital}}</span>  Region / Sub-region: <span> {{data.region}} / {{data.subregion}}</span></h3>
+         <h3>Population: <span>{{data.population | number}}</span>  Area: <span>{{data.area | number}}</span>  Population Density: <span>{{data.populationDensity | number}}</span></h3>  
+         <h3>Currency: <span>{{data.currencies[0].name}}</span></h3>
+         
+         <h3>Language(s): <span>{{langs}}</span></h3>
+         <h3>Border(s): <span>{{borders}}</span></h3>
+         <h3>Timezone(s): <span>{{data.timezones[0]}}</span></h3>
+         <h3>Top level domain: <span>{{data.topLevelDomain[0]}}</span></h3>
 
-} -->
-}
-<mat-form-field>
-   <mat-label>pick a country</mat-label>
-        <mat-select [ngModel]="mySelection()" (ngModelChange)=" mySelection.set($any($event))"
-            name="code">
-               @for (item of myCountries.value(); track item.name) {
-                <mat-option [value]="item.alpha3">{{item.name}}</mat-option>
-                }
-        </mat-select>
- </mat-form-field>
- 
- @if (countryResource.hasValue()){
-@let data = countryResource.value(); 
-Independent: {{data.independent}} 
-<h4>Name: {{data.name}} Region: {{data.region}} Sub-region: {{data.subregion}}</h4>
-<h4>Population: {{data.population|number}}</h4>
-<h4>Area: {{data.area | number}}</h4>
-<h4>Population Density:{{data.populationDensity|number}}</h4>
-<p>Flag: <img style='border:1px solid #000000' width="96" height="72" src="{{data.flags.svg}}"></p>
-French Trans: {{data.translations.fr}}
-{{data.currencies[0].name}} 
-{{data.timezones[0]}} 
+         }
+      </section>
+    
+      
 
-@if(langs){
-<h4>Language(s): {{langs}}</h4>  
-}
-@if(borders){
-<h4>Border(s): {{borders}}</h4>  
-}
-<h4>Top level domain: {{data.topLevelDomain[0]}}</h4>
+   </main>
 
-}
-
-
-  <h3>{{countryResource.value()|json}}</h3>
-
-
-
+   <!-- Footer section -->
+   <footer>
+      <p>Ken S Coles 2026 </p>
+      <a href="https://countries.dev/">my thanks to Countries.Dev</a>
+   </footer>
+</body>

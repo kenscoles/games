@@ -10,26 +10,38 @@
 }
 <mat-form-field>
    <mat-label>pick a country</mat-label>
-        <mat-select [ngModel]="mySelection()" (ngModelChange)=" mySelection.set($any($event))"
-            name="code">
-               @for (item of myCountries.value(); track item.name) {
-                <mat-option [value]="item.alpha3">{{item.name}}</mat-option>
-                }
-        </mat-select>
- </mat-form-field>
- <p>You selected : <strong>{{ mySelection() }}</strong></p>
- @if (countryResource.isLoading()) {
-        <p>Loading country details...</p>
+   <mat-select [ngModel]="mySelection()" (ngModelChange)=" mySelection.set($any($event))" name="code">
+      @for (item of myCountries.value(); track item.name) {
+      <mat-option [value]="item.alpha3">{{item.name}}</mat-option>
       }
-      @if (countryResource.hasValue()) {
-         @let country = countryResource.value().data.objects[0]; <p>Common name: {{country.names.common}}</p>
-          <p>Alt names: {{country.names.alternates}}</p>
-          <!-- <p>Resource {{countryResource.value() | json}}</p> -->
-          <p>Code: {{country.codes.alpha_3}}</p>
-          <p>Region: {{country.region}}</p>
-          <p>Sub region: {{country.subregion}}</p>
-          <p>Population: {{country.population|number}}</p>
-          <p>Flag: <img width="96" height="72" src="{{country.flag.url_svg}}"></p>
-          <p>Border(s): {{country.borders.join(", ")}}</p>
-        }
-      
+   </mat-select>
+</mat-form-field>
+<p>You selected : <strong>{{ mySelection() }}</strong></p>
+@if (countryResource.isLoading()) {
+<p>Loading country details...</p>
+}
+@if (data()) {
+
+<table style="width: 30%;  text-align:justify;">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Code</th>
+        <th>Region</th> 
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of res.myRes() ; track item.name){
+      <tr>
+        <td>{{ item.name}}</td>
+        <td>{{ item.alpha3Code }}</td>
+        <td>{{ item.region}}</td>
+          <button mat-raised-button (click)="getCountry(item.region)">view</button>
+      </tr>
+      }
+    </tbody>
+  </table>
+}
+
+<button (click)="show()">show</button>

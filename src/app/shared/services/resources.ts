@@ -1,10 +1,15 @@
 import { httpResource, HttpResourceRef } from '@angular/common/http';
-import { inject, Injectable, Signal } from '@angular/core';
+import { effect, inject, Injectable, signal, Signal } from '@angular/core';
 import { Util } from './util';
 import { myCode } from '../../country.interface';
 import { countryAdapter } from '../../country.adapter';
 import { State } from './state';
 
+interface List {
+  name: string;
+  alpha3Code: string;
+  region: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +18,18 @@ export class Resources {
 
   #state = inject(State)
   #util = inject(Util)
-  readonly codes = httpResource<any>(() => 'https://restcountries.com/v3.1/all?fields=name,cca3,capital,flags,region')
-  //result: myCode[] = []
+  readonly codes = httpResource<any>(() => 'https://countries.dev/countries?fields=name%2Calpha3Code%2Cregion')
+  
   result: myCode[] = []
+  myRes = signal(<any>[])
+  t = effect(() => {
+    this.myRes.set(this.codes.value())  
+    console.log("myRes ", this.myRes())
+  })
+
   // Factory method for reactive data fetching
   createUserResource = ($countryId: Signal<any>) => httpResource<any>(() => (
-    $countryId() ? `https://restcountries.com/v3.1/alpha/${$countryId()}` : undefined
+    $countryId() ? `https://countries.dev/alpha/${$countryId()}?fields=name%2Ccapital%2Cflag&full=true` : undefined
   ))
 
   getCountry = ($countryId: Signal<string>) => this.createUserResource($countryId)

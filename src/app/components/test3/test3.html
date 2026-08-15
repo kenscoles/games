@@ -1,0 +1,41 @@
+
+Filter ... <input [ngModel]="searchTerm()" (ngModelChange)="searchTerm.set($any($event))">
+
+@if (res.myRes()) {
+
+<table style="width: 30%;  text-align:justify;">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Code</th>
+        <th>Region</th> 
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of filtered() ; track item.name){
+      <tr>
+        <td>{{ item.name}}</td>
+        <td>{{ item.alpha3Code }}</td>
+        <td>{{ item.region}}</td>
+        <td><button mat-raised-button (click)="getCountry(item.alpha3Code)">view</button></td>
+      </tr>
+      }
+    </tbody>
+  </table>
+}
+@if (country.isLoading()) {
+  <div>Loading ...</div>
+} 
+ @else if (country.error()) {
+  <div>Could not load user information</div>
+}
+@else if (country.hasValue()) {
+
+  <h5>Country: {{country.value().name}}</h5>
+  <h5>Capital: {{country.value().capital}}</h5>
+  <h5>Border(s): {{borders}}</h5>
+  <h5>Language(s) : {{langs}}</h5>
+  <h5>TZ(s) : {{country.value().timezones.join(", ")}}</h5>
+}
+
