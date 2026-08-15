@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { Board } from './board';
 import { BoardComponent } from './board/board.component';
@@ -8,6 +8,7 @@ import { BoardComponent } from './board/board.component';
   templateUrl: './mastermind.component.html',
   styleUrls: ['./mastermind.component.css'],
   standalone : true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [BoardComponent]
 })
 export class MastermindComponent {

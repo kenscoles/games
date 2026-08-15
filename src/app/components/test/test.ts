@@ -1,4 +1,4 @@
-import { Component, effect, inject, linkedSignal, signal } from '@angular/core';
+import { Component, effect, inject, linkedSignal, signal, ChangeDetectionStrategy } from '@angular/core';
 import { httpResource } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -23,6 +23,7 @@ interface Country {
   selector: 'app-test',
   imports: [CommonModule, MatButtonModule, MatFormFieldModule, MatSelectModule, FormsModule],
   templateUrl: './test.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './test.scss'
 })
 export class Test {

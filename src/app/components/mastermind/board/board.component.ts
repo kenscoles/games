@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Board, Guess, Combination } from '../board';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { FormsModule } from '@angular/forms';
@@ -14,6 +14,7 @@ import { FillPipe } from '../../../shared/pipes/fill.pipe';
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.css'],
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, MatButtonModule, MatInputModule, MatSelectModule,MatGridListModule,
        Debounce, FillPipe]
 })

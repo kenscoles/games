@@ -1,5 +1,5 @@
 import { httpResource } from '@angular/common/http';
-import { Component, effect, inject, signal } from '@angular/core';
+import { Component, effect, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
@@ -25,6 +25,7 @@ interface List {
   selector: 'app-test2',
   imports: [FormsModule, MatButtonModule, MatFormFieldModule, MatSelectModule],
   templateUrl: './test2.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './test2.scss',
 })
 export class Test2 {

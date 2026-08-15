@@ -1,4 +1,4 @@
-import { Component, signal, effect, OnInit, inject } from '@angular/core';
+import { Component, signal, effect, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [DecimalPipe, CommonModule],
   templateUrl: './country-search-component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './country-search-component.scss'
 })
 export class CountrySearchComponent  implements OnInit {

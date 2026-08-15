@@ -1,5 +1,5 @@
 import { httpResource } from '@angular/common/http';
-import { Component, effect, inject, linkedSignal, signal } from '@angular/core';
+import { Component, effect, inject, linkedSignal, signal, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
@@ -10,6 +10,7 @@ import { Resources } from '../../shared/services/resources';
   selector: 'app-test3',
   imports: [FormsModule, MatButtonModule, MatFormFieldModule, MatSelectModule],
   templateUrl: './test3.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './test3.scss',
 })
 export class Test3 {

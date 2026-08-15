@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { HttpClient, httpResource } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -20,6 +20,7 @@ interface Country {
   selector: 'app-select',
   imports: [FormsModule, MatButtonModule, MatFormFieldModule, MatSelectModule, CommonModule],
   templateUrl: './select.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './select.scss'
 })
 export class Select implements OnInit {
