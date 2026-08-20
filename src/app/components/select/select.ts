@@ -32,19 +32,7 @@ export class Select implements OnInit {
   myCountry = signal<any>("")
   //
 
-private apiKey = 'rc_live_5254adb41f674417be1e83e7a9369414';
-  
-  // Use the core v5 base URL
-  private baseUrl = 'https://api.restcountries.com/countries/v5';
-  
-  countryResource = httpResource<any>(() => 
-    ({
-    url: `${this.baseUrl}/codes.alpha_3/${this.mySelection()}`,
-    headers: {
-      'Authorization': `Bearer ${this.apiKey}`,
-    }
-  
-  }));
+
    
 
   //
@@ -63,11 +51,5 @@ private apiKey = 'rc_live_5254adb41f674417be1e83e7a9369414';
       error: (err) => console.error('Error loading JSON file', err)
     });
   }
-  show(){
-console.log("countries: ", this.countries)
-const k = this.countryResource.value();
-console.log("resource: ", k)
-console.log("local resource: ", this.myCountry())
-
-  }
+ 
 }

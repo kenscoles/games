@@ -10,7 +10,7 @@ import { Resources } from '../../shared/services/resources';
   selector: 'app-test3',
   imports: [FormsModule, MatButtonModule, MatFormFieldModule, MatSelectModule],
   templateUrl: './test3.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: './test3.scss',
 })
 export class Test3 {

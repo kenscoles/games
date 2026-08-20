@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Resources } from '../../shared/services/resources';
 import { Country } from '../country/country';
-import { httpResource } from '@angular/common/http';
 
 interface CountryResponseV5 {
   codes: {
@@ -42,35 +41,8 @@ export class World {
         item.region.toLowerCase().includes(this.debounced().toLowerCase())
       )
   });
-   private readonly apiKey = 'rc_live_5254adb41f674417be1e83e7a9369414';
+   
 
-  // Defines the httpResource reactive signal fetching from v5
-  readonly countries = httpResource<string>(() => ({
-    url: 'https://api.restcountries.com/countries/v5?q=canada',
-    headers: {
-      'Authorization': `Bearer ${this.apiKey}`
-    }
-  }));
-
-//     countryCodesResource = httpResource<string[]>(() => ({
-//     // 2. Updated domain and path
-//     url: 'https://api.restcountries.com/countries/v5',
-//     // 3. Changed filter property to response_fields
-//     params: { response_fields: 'codes.alpha_3' },
-//     // 4. Added required v5 Authorization headers
-//     headers: {
-//       'Authorization': 'Bearer rc_live_5254adb41f674417be1e83e7a9369414' // Replace with your production key
-//     }
-//   }), {
-//     // 5. Updated transformation logic to extract nested data
-//     parse: (rawJson: unknown) => {
-//       const countries = rawJson as CountryResponseV5[];
-// console.log("ok?",rawJson)
-//       const myCountries = countries.map(country => country.codes?.alpha_3).filter(Boolean);
-      
-//       return myCountries
-//     }
-//   })
 
   constructor() {
     
@@ -102,25 +74,7 @@ export class World {
     //this.router.navigate(['country'])
     this.state.showCountry.set(true)
   }
-//   test = async ()=> {
-//     fetch(
-//   'https://api.restcountries.com/countries/v5?q=france',
-//   { headers: { 'Authorization': 'Bearer rc_live_5254adb41f674417be1e83e7a9369414' } }
-// )
-//   .then(function (response) { return response.json(); })
-//   .then(function (data) { console.log(data); });
 
-//   }
 
-test = () => {
-  //console.log("mydata: ", this.countryCodesResource.value())
-  if (this.countries.hasValue()){
-    const j = this.countries.value()
-    
-    console.log("j: ", j)
-    
-  } 
-  
-  // 
-}
+
 }

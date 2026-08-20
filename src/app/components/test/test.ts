@@ -23,7 +23,7 @@ interface Country {
   selector: 'app-test',
   imports: [CommonModule, MatButtonModule, MatFormFieldModule, MatSelectModule, FormsModule],
   templateUrl: './test.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: './test.scss'
 })
 export class Test {

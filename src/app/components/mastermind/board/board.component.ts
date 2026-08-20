@@ -14,7 +14,7 @@ import { FillPipe } from '../../../shared/pipes/fill.pipe';
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.css'],
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormsModule, MatButtonModule, MatInputModule, MatSelectModule,MatGridListModule,
        Debounce, FillPipe]
 })

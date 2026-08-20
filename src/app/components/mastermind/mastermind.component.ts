@@ -8,7 +8,7 @@ import { BoardComponent } from './board/board.component';
   templateUrl: './mastermind.component.html',
   styleUrls: ['./mastermind.component.css'],
   standalone : true,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [BoardComponent]
 })
 export class MastermindComponent {
