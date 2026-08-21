@@ -1,14 +1,18 @@
 import { httpResource } from '@angular/common/http';
 import { Component, effect, inject, linkedSignal, signal, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatLabel } from '@angular/material/form-field';
 import { Resources } from '../../shared/services/resources';
 
 @Component({
   selector: 'app-test3',
-  imports: [FormsModule, MatButtonModule, MatFormFieldModule, MatSelectModule],
+  imports: [FormsModule,CommonModule, MatButtonModule, MatInputModule,
+     MatLabel, MatFormFieldModule, MatSelectModule],
   templateUrl: './test3.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: './test3.scss',
@@ -17,6 +21,7 @@ export class Test3 {
 
   res = inject(Resources)
 
+  showList = signal(true) // show the filter input
   searchTerm = signal("")
   chosen = signal("GBR")
   country = this.res.getCountry(this.chosen) // fires when chosen changes
@@ -39,6 +44,7 @@ export class Test3 {
   })
   getCountry(data: string) {
     this.chosen.set(data)
+    this.showList.set(false)
 
   }
   langs: string[] | undefined = []
@@ -52,5 +58,7 @@ export class Test3 {
     const borderArr = borders?.map((user: string) => " " + user);
     this.borders = borderArr;
   }
-  
+  showtheList(){
+  this.showList.set(true)
+}
 }

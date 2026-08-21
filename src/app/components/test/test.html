@@ -1,39 +1,44 @@
 <body>
    <!-- Header section -->
-    <h1>Countries Database</h1>
-@if (showList()) {   
+   <h1>Countries Database</h1>
+   @if (showList()) {
    <header>
-         Filter ..<input [ngModel]="searchTerm()" (ngModelChange)="searchTerm.set($any($event))">
-      
-         <table style="width: 30%;  text-align:justify;">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Code</th>
-        <th>Region</th> 
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (item of filtered() ; track item.name){
-      <tr>
-        <td>{{ item.name}}</td>
-        <td>{{ item.alpha3 }}</td>
-        <td>{{ item.region}}</td>
-          <button mat-raised-button (click)="getCountry(item.alpha3)">view</button>
-      </tr>
-      }
-    </tbody>
-  </table>   
-   </header>
-}
-<button [hidden]="showList()" matButton="filled"  (click)="showtheList()">Show search</button>           
-@if (countryResource.hasValue()){
-            @let data = countryResource.value();
-            <p><img style = "padding: 10px 50px 50px 10px;" width="192" height="144" src="{{data.flags.svg}}"></p>
+      <mat-form-field [style.width.px]=100>
+         <mat-label>search</mat-label>
+         <input matInput [ngModel]="searchTerm()" (ngModelChange)="searchTerm.set($any($event))">
+      </mat-form-field>
+
+      <table style="width: 30%;  text-align:justify;">
+         <thead>
+            <tr>
+               <th>Name</th>
+               <th>Code</th>
+               <th>Region</th>
+               <th>Action</th>
+            </tr>
+         </thead>
+         <tbody>
+            @for (item of filtered() ; track item.name){
+            <tr>
+               <td>{{ item.name}}</td>
+               <td>{{ item.alpha3 }}</td>
+               <td>{{ item.region}}</td>
+               <button mat-raised-button (click)="getCountry(item.alpha3)">view</button>
+            </tr>
+            } @empty {
+            <tr style="color: red;">There are no matches.</tr>
             }
-         
-      
+         </tbody>
+      </table>
+   </header>
+   }
+   <button [hidden]="showList()" matButton="filled" (click)="showtheList()">Show search</button>
+   @if (countryResource.hasValue()){
+   @let data = countryResource.value();
+   <p><img style="padding: 10px 50px 50px 10px;" width="192" height="144" src="{{data.flags.svg}}"></p>
+   }
+
+
 
    <main>
       <section>
@@ -43,11 +48,14 @@
          @if (countryResource.hasValue()){
          @let data = countryResource.value();
          <h3>Independent: @if(data.independent) {<span>YES</span>}
-                        @else {<span>NO</span>} </h3>
-         <h3>Name: <span>{{data.name}} </span> <span>({{data.translations.fr}})</span> Capital: <span>{{data.capital}}</span>  Region / Sub-region: <span> {{data.region}} / {{data.subregion}}</span></h3>
-         <h3>Population: <span>{{data.population | number}}</span>  Area: <span>{{data.area | number}}</span>  Population Density: <span>{{data.populationDensity | number}}</span></h3>  
+            @else {<span>NO</span>} </h3>
+         <h3>Name: <span>{{data.name}} </span> <span>({{data.translations.fr}})</span> Capital:
+            <span>{{data.capital}}</span> Region / Sub-region: <span> {{data.region}} / {{data.subregion}}</span>
+         </h3>
+         <h3>Population: <span>{{data.population | number}}</span> Area: <span>{{data.area | number}}</span> Population
+            Density: <span>{{data.populationDensity | number}}</span></h3>
          <h3>Currency: <span>{{data.currencies[0].name}}</span></h3>
-         
+
          <h3>Language(s): <span>{{langs}}</span></h3>
          <h3>Border(s): <span>{{borders}}</span></h3>
          <h3>Timezone(s): <span>{{data.timezones[0]}}</span></h3>
@@ -55,8 +63,8 @@
 
          }
       </section>
-    
-      
+
+
 
    </main>
 

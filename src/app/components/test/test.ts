@@ -7,6 +7,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { Country1 } from '../../types';
 import { debouncedSignal } from '../../shared/services/util';
+import { MatInputModule } from '@angular/material/input';
+import { MatLabel } from '@angular/material/form-field';
+import { Resources } from '../../shared/services/resources';
 
 interface Country {
   name: string;
@@ -21,14 +24,17 @@ interface Country {
 
 @Component({
   selector: 'app-test',
-  imports: [CommonModule, MatButtonModule, MatFormFieldModule, MatSelectModule, FormsModule],
+  imports: [CommonModule, MatButtonModule, MatFormFieldModule, MatSelectModule,
+     FormsModule, MatInputModule, MatLabel],
   templateUrl: './test.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: './test.scss'
 })
 export class Test {
 
-  showList = signal(true)
+  res = inject(Resources)
+
+  showList = signal(true) // show the filter input
   myCountries = httpResource<Country[]>(() => 'assets/myCountries.json')
   mySelection = signal(<string>("GBR"))
   langs:string[] | undefined = []
@@ -48,9 +54,10 @@ export class Test {
     source: this.mySig,
     computation: () => {
       return this.mySig()
-        .filter((item: {name:string; alpha3: string}) =>
+        .filter((item: {name:string; alpha3: string; region:string}) =>
           item.name.toLowerCase().includes(this.debounceSearchValue().toLowerCase())
-          || item.alpha3 == this.debounceSearchValue().toUpperCase()
+          || item.alpha3.toLowerCase() == this.debounceSearchValue().toLowerCase()
+          //|| item.region.toLowerCase() == this.debounceSearchValue().toLowerCase()
         )
     }
   })

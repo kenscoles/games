@@ -15,21 +15,6 @@ export const routes: Routes = [
 
             },
             {
-                path: 'country', title: 'country',
-                loadComponent: () => import('./components/country/country').then(c => c.Country)
-
-            },
-            {
-                path: 'world', title: 'world',
-                loadComponent: () => import('./components/world/world').then(c => c.World)
-
-            },
-            {
-                path: 'test', title: 'test',
-                loadComponent: () => import('./components/country-search-component/country-search-component').then(c => c.CountrySearchComponent)
-
-            },
-            {
                 path: 'select', title: 'select',
                 loadComponent: () => import('./components/select/select').then(c => c.Select)
 
