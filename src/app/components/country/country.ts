@@ -1,4 +1,3 @@
-import { httpResource } from '@angular/common/http';
 import { Component, effect, inject, linkedSignal, signal, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -10,16 +9,16 @@ import { MatLabel } from '@angular/material/form-field';
 import { Resources } from '../../shared/services/resources';
 
 @Component({
-  selector: 'app-test3',
+  selector: 'app-country',
   imports: [FormsModule,CommonModule, MatButtonModule, MatInputModule,
      MatLabel, MatFormFieldModule, MatSelectModule],
-  templateUrl: './test3.html',
+  templateUrl: './country.html',
+  styleUrl: './country.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrl: './test3.scss',
 })
-export class Test3 {
+export class Country {
 
-  res = inject(Resources)
+res = inject(Resources)
 
   showList = signal(true) // show the filter input
   searchTerm = signal("")
@@ -62,3 +61,4 @@ export class Test3 {
   this.showList.set(true)
 }
 }
+

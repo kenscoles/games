@@ -1,5 +1,5 @@
 import { httpResource, HttpResourceRef } from '@angular/common/http';
-import { effect, inject, Injectable, signal, Signal } from '@angular/core';
+import { effect, inject, Injectable, signal, Signal, Service } from '@angular/core';
 import { Util } from './util';
 import { myCode } from '../../country.interface';
 import { countryAdapter } from '../../country.adapter';
@@ -11,9 +11,8 @@ interface List {
   region: string;
 }
 
-@Injectable({
-  providedIn: 'root'
-})
+@Service()
+
 export class Resources {
 
   #state = inject(State)

@@ -1,8 +1,7 @@
-import { effect, Injectable, Signal, signal } from '@angular/core';
+import { effect, Signal, signal, Service } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Service()
+
 export class Util {
   constructor() { }
   t(min: number, max: number) {

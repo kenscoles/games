@@ -18,7 +18,7 @@ import { State } from '../../shared/services/state';
     <button matButton="filled" [routerLink]="'/select'">Test select</button> -->
     
     <!-- <button matButton="filled" [routerLink]="'/test2'">Test2</button> -->
-    <button matButton="filled" [routerLink]="'/test3'">Countries</button>
+    <button matButton="filled" [routerLink]="'/country'">Countries</button>
 
     
   </div>
